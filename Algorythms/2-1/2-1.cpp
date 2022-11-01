@@ -2,6 +2,7 @@
 using namespace std;
 int main()
 {
+    setlocale(LC_ALL, "Rus");
     int n; int sum = 0;
     cin >> n;
     if (n <= 0)
