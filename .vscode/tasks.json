@@ -1,17 +1,5 @@
 {
-    "version": "2.0.0",
     "tasks": [
-        {
-            "label": "echo",
-            "type": "shell",
-            "command": "gcc",
-            "args": [
-                "1-1.cpp",
-                "-o",
-                "1-1.exe"
-            ],
-            "group": "build"
-        },
         {
             "type": "cppbuild",
             "label": "C/C++: g++.exe сборка активного файла",
@@ -35,5 +23,6 @@
             },
             "detail": "Задача создана отладчиком."
         }
-    ]
+    ],
+    "version": "2.0.0"
 }
