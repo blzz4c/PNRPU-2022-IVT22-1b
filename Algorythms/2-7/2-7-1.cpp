@@ -8,7 +8,7 @@ int main()
     k = sqrt(n);
     for (int i = 0; i < k; i++)
     {
-        for (int j = 0; j < k; j++);
+        for (int j = 0; j < k; j++)
         {
             cout << "* ";
         }
