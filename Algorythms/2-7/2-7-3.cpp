@@ -16,8 +16,7 @@ int main()
         {
             cout << "  ";
         }
-        cout << "* ";
-        cout << endl;
+        cout << "* " << endl;
     }
     for (int j = 0; j < n; j++);
         {
