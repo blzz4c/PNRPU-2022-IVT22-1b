@@ -1,0 +1,15 @@
+{
+    "configurations": [
+    {
+        "name": "(Windows) Запустить",
+        "type": "cppvsdbg",
+        "request": "launch",
+        "program": "Введите имя программы, например: ${workspaceFolder}/a.exe",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "console": "externalTerminal"
+    }
+    ]
+}
