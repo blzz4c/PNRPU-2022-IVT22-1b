@@ -12,7 +12,7 @@ int main()
 		max_new = p;
 		if (max_new > max_old)
 			max = max_new;
-		max_old = max_new; // где же массивы((
+		max_old = max_new;
         min_new = p;
         if (min_new > min_old)
 			min = min_new;
