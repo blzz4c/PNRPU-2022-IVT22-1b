@@ -4,7 +4,7 @@ int main()
 {
 	setlocale(LC_ALL, "Rus");
 	int n, p;
-    bool plusFirst = false, minusFirst = false; //flag
+    bool plusFirst =  false, minusFirst = false; //flag
 	cout << "Введите кол-во элементов послед-сти: " << endl;
 	cin >> n;
 	for (int i = 1; i <= n; i++)
