@@ -3,19 +3,20 @@ using namespace std;
 
 int main()
 {
-	int a, b;
+	int num, tmp, *ptr1, *ptr2;
 	setlocale(LC_ALL, "rus");
 	cout << "Введите значения переменных a и b: " << endl;
-	cin >> a >> b;
+	cin >> num;
 
-	int *ptr1 = &a;
-	int *ptr2 = &b;
-	int *ptemp = ptr1;
+	ptr1 = &num;
+    tmp = *ptr1;
+    cin >> num;
 
-	*ptr1 = *ptr2;
-	*ptr2 = *ptemp;
+	ptr2 = &num;
+    *ptr1 = *ptr2;
+    *ptr2 = tmp;
 
-	cout << "a = " << a << endl;
-	cout << "b = " << b << endl;
+	cout << "a = " << *ptr1 << endl;
+	cout << "b = " << *ptr2 << endl;
 	return 0;
 }

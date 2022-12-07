@@ -3,13 +3,13 @@ using namespace std;
 
 int main()
 {
-	int a, b, Sum = 0;
+	float a, b, *ptr1, *ptr2, Sum = 0;
 	setlocale(LC_ALL, "rus");
 	cout << "Введите значения переменных a и b: " << endl;
 	cin >> a >> b;
 
-	int *ptr1 = &a;
-	int *ptr2 = &b;
+	ptr1 = &a;
+	ptr2 = &b;
 
 	Sum = *ptr1 + *ptr2;
 
