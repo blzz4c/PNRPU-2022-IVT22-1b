@@ -8,6 +8,7 @@ int main()
 	bool flag = false;
 	cout << "Введите количество элементов n" << endl;
 	cin >> n;
+	max = sin(n + (1/ n));
 	for (int i = 1; i <= n; i++)
 	{
 		if (max < sin(n + (i / n)))
