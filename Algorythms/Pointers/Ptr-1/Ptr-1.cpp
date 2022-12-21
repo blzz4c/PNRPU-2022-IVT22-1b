@@ -3,16 +3,16 @@ using namespace std;
 
 int main()
 {
-	int num, tmp, *ptr1, *ptr2;
+	int num1, num2, *ptr1, *ptr2;
 	setlocale(LC_ALL, "rus");
 	cout << "Введите значения переменных a и b: " << endl;
-	cin >> num;
+	cin >> num1;
+	ptr1 = &num1;
 
-	ptr1 = &num;
-    tmp = *ptr1;
-    cin >> num;
+    cin >> num2;
+	ptr2 = &num2;
 
-	ptr2 = &num;
+	int tmp = *ptr1;
     *ptr1 = *ptr2;
     *ptr2 = tmp;
 
