@@ -2,11 +2,12 @@
 
 int main()
 {
+    const int N = 11;
 	int temp = 0;
-	int arr[] = { 41, 42, 66, 87, 86, 38, 77, 84, 45, 35, 22 };
-	for (int i = 0; i < 11-1; i++)
+	int arr[N] = { 41, 42, 66, 87, 86, 38, 77, 84, 45, 35, 22 };
+	for (int i = 0; i < N-1; i++)
 	{
-		for (int j = 0; j < 11 - i - 1; j++)
+		for (int j = 0; j < N - i - 1; j++)
 		{
 			if (arr[j] > arr[j+1])
 			{
@@ -16,7 +17,7 @@ int main()
 			}
 		}
 	}
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < N; i++)
 	{
 		std::cout << arr[i] << " ";
 	}
