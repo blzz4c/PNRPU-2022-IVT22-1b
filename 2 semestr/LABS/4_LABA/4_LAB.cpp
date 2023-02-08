@@ -37,7 +37,7 @@ int main()
 				arr[i] = arr[i-1];
 				arr[i - 1] = temp;
 			}
-			arr[0] = 0;
+			arr[0] = 0; //ооо, да я мастер костылей
 			for (int i = 0; i < SIZE; i++)
 			{
 				std::cout << arr[i] << " ";
