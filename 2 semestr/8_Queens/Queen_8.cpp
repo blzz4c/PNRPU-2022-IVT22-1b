@@ -2,119 +2,90 @@
 
 using namespace std;
 
-int board[8][8];
+const int Size = 8;
+int Board[Size][Size];
+int NumberOfTheQueenPlacementMethod = 0;
+int x, y;
+bool NotFound = true;
 
-const int QUEEN = -1;
+void ShowBoard();
 
-void resetBoard();
-void showBoard();
-bool checkQueen(int i);
-void setQueen(int i, int j);
+bool СurrentPositionFits(int a, int b);
 
-void resetBoard()
-{
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            board[i][j] = 0;
-        }
-    }
+void FindThePositionOfTheNextQueen(int a);
+
+int main() {
+	setlocale(LC_ALL, "Rus");
+	cout << "Введите положение первого ферзя (x, y): ";
+	cin >> x >> y;
+	y = Size - y - 1;
+	Board[y][x] = 1;
+	FindThePositionOfTheNextQueen(0);
+	return 0;
 }
 
-void showBoard()
+void FindThePositionOfTheNextQueen(int a)
 {
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            if (board[i][j] == QUEEN)
-            {
-                cout << "Q ";
-            }
-            else
-            {
-                cout << ". ";
-            }
-        }
-        cout << endl;
-    }
+	int i = 0;
+	while (i < Size && NotFound) {
+		if (СurrentPositionFits(a, i)) {
+			Board[a][i] = 1;
+			if (a + 1 == Size) {
+				ShowBoard();
+			}
+			else {
+				FindThePositionOfTheNextQueen(a + 1);
+			}
+			if (a != y || i != x) {
+				Board[a][i] = 0;
+			}
+		}
+		i++;
+	}
 }
 
-void setQueen(int i, int j)
+bool СurrentPositionFits(int a, int b)
 {
-    for (int x = 0; x < 8; ++x)
-    {
-        board[x][j] += 1; 
-        board[i][x] += 1; 
-
-        int d;
-        d = j - i + x; 
-        if (d >= 0 && d < 8)
-        {
-            board[x][d] += 1;
-        }
-
-        d = j + i - x; 
-        if (d >= 0 && d < 8)
-        {
-            board[x][d] += 1;
-        }
-    }
-    board[i][j] = QUEEN;
+	for (int i = 0; i < Size; i++) {
+		if (Board[i][b] && i != a) {
+			return false;
+		}
+	}
+	for (int i = 0; i < Size; i++) {
+		if (Board[a][i] && i != b) {
+			return false;
+		}
+	}
+	for (int i = 1; i <= b && i <= a; i++) {
+		if (Board[a - i][b - i]) {
+			return false;
+		}
+	}
+	for (int i = 1; i <= b && i + a < Size; i++) {
+		if (Board[a + i][b - i]) {
+			return false;
+		}
+	}
+	for (int i = 1; i + b < Size && i + a < Size; i++) {
+		if (Board[a + i][b + i]) {
+			return false;
+		}
+	}
+	for (int i = 1; i <= a && i + b < Size; i++) {
+		if (Board[a - i][b + i]) {
+			return false;
+		}
+	}
+	return true;
 }
 
-void deleteQueen(int i, int j)
+void ShowBoard()
 {
-    for (int x = 0; x < 8; ++x)
-    {
-        board[x][j] -= 1; 
-        board[i][x] -= 1; 
-
-        int d;
-        d = j - i + x; 
-        if (d >= 0 && d < 8)
-        {
-            board[x][d] -= 1;
-        }
-
-        d = j + i - x; 
-        if (d >= 0 && d < 8)
-        {
-            board[x][d] -= 1;
-        }
-    }
-    board[i][j] = 0;
-}
-
-bool checkQueen(int i)
-{
-    bool result = false;
-
-    for (int j = 0; j < 8; ++j)
-    {
-        if (board[i][j] == 0)
-        {
-            setQueen(i, j);
-
-            if (i == 7)
-            {
-                result = true;
-            }
-            else if (!(result = checkQueen(i + 1)))
-            {
-                deleteQueen(i, j);
-            }
-        }
-        if (result) { break; }
-    }
-    return result;
-}
-
-int main()
-{
-    resetBoard();
-    checkQueen(0);
-    showBoard();
-    return 0;
+	NotFound = false;
+	for (int a = 0; a < Size; a++) {
+		for (int b = 0; b < Size; b++) {
+			cout << (Board[a][b] ? "Q " : ". ");
+		}
+		cout << '\n';
+	}
 }
