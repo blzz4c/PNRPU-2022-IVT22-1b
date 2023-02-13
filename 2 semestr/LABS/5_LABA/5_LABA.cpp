@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -12,7 +13,8 @@ int main()
 
 	srand(time(NULL));
 
-	int midA = 0, midNow = 0, cnt = 0, ROWS, COLS;
+	int cnt = 0, ROWS, COLS;
+	float midA = 0, midNow = 0;
 
 	int arr[SIZEh][SIZEw];
 
@@ -40,7 +42,7 @@ int main()
 				}
 				cout << endl;
 			}
-			cout << "Среднее арифметическое 1 столбца: " << midA << endl;
+			cout << "Среднее арифметическое 1 столбца: " << round(midA/ROWS) << endl;
 			for (int i = 0; i < COLS; i++)
 			{
 				for (int j = 0; j < ROWS; j++)
@@ -51,18 +53,18 @@ int main()
 						cnt += 1;
 					}
 				}
-				midA = midNow;
+				midA = round(midNow/ROWS);
 				midNow = 0;
 			}
-			cout << "Количество чисел превышающие среднее арифметическое предыдущего столбца: " << cnt;
+			cout << "Количество чисел превышающие среднее арифметическое предыдущего столбца: " << cnt << endl;
 		}
 		else
 		{
-			std::cout << "Количество столбцов не может быть отрицательным или равным 0. Попробуйте ещё раз.";
+			cout << "Количество столбцов не может быть отрицательным или равным 0. Попробуйте ещё раз.";
 		}
 	}
 	else
 	{
-		std::cout << "Количество строк не может быть отрицательным или равным 0. Попробуйте ещё раз.";
+		cout << "Количество строк не может быть отрицательным или равным 0. Попробуйте ещё раз.";
 	}
 }
