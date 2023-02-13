@@ -3,13 +3,12 @@ using namespace std;
 
 void towerOfHanoi(int n, char from, char to, char tmp)
 {
-    if (n == 0) 
+    if (n != 0) 
     {
-        return;
+        towerOfHanoi(n - 1, from, tmp, to);
+        cout << "Move ring " << n << " from " << from << " to " << to << endl;
+        towerOfHanoi(n - 1, tmp, to, from);
     }
-    towerOfHanoi(n - 1, from, tmp, to);
-    cout << "Move ring " << n << " from " << from << " to " << to << endl;
-    towerOfHanoi(n - 1, tmp, to, from);
 }
 
 int main()
