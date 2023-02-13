@@ -4,7 +4,7 @@ using namespace std;
 
 const int Size = 8;
 int Board[Size][Size];
-int NumberOfTheQueenPlacementMethod = 0;
+
 int x, y;
 bool NotFound = true;
 
