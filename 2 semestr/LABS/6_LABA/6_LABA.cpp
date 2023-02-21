@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	system("chcp 1251 > Null");
+	system("chcp 1251 > NULL");
 	string d = "0123456789";
 	string s1, s3;
 	s3 = "";
