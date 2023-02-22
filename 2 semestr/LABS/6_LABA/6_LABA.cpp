@@ -11,8 +11,7 @@ int main()
 	cout << "Введите строку: ";
 	getline(cin, s1);
 	s1 = ' ' + s1;
-	int i;
-	i = 0;
+	int i = 0;
 	while (i < s1.length()) {
 		if (s1[i] == ' ') {
 			int j = i + 1;
