@@ -16,7 +16,7 @@ void SS(int k, ...)
 		std::cout << DEC << " ";
 	}
 }
-void main()
+int main()
 {
 	setlocale(LC_ALL, "Rus");
 	std::cout << "\nИз 8-ой СС в 10-ую(3, 8, 6, 11) = ";
