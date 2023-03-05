@@ -135,13 +135,13 @@ void DelNumAuto() {
         int nums = n;
         int k = 0;
         while (!feof(file1) && k < nums) {
-            Owner Owner;
-            fread(&Owner, sizeof(Owner), 1, file1);
-            if (!strcmp(numautoc, Owner.numauto)) {
+            Owner owner;
+            fread(&owner, sizeof(owner), 1, file1);
+            if (!strcmp(numautoc, owner.numauto)) {
                 n--;
             }
             else {
-                fwrite(&Owner, sizeof(Owner), 1, file2);
+                fwrite(&owner, sizeof(owner), 1, file2);
             }
             k++;
         }
