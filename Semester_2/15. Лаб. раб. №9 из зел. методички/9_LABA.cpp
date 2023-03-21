@@ -67,8 +67,6 @@ void numW() {
     int numW = 0; //количество слов всего
     int wordK = 0; //номер слова на кириллице в котором больше всего гласных
     int wordL = 0; //номер слова на латинице в котором больше всего гласных
-    int amountK = 0;
-    int amountL = 0;
     int maxK = 0;
     int maxL = 0;
 
@@ -77,8 +75,8 @@ void numW() {
         if (s[0] != ' ') {
             numW += 1;
         }
-        amountK = 0;
-        amountL = 0;
+        int amountK = 0;
+        int amountL = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s[i] == 'а' || s[i] == 'я' || s[i] == 'у' || s[i] == 'ю' || s[i] == 'о' || s[i] == 'е' || s[i] == 'ё' || s[i] == 'э' || s[i] == 'и' || s[i] == 'ы' || s[i] == 'А' || s[i] == 'Я' || s[i] == 'У' || s[i] == 'Ю' || s[i] == 'О' || s[i] == 'Е' || s[i] == 'Ё' || s[i] == 'Э' || s[i] == 'И' || s[i] == 'Ы') {
                 amountK += 1;
