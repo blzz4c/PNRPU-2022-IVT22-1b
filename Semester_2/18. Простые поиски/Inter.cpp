@@ -12,7 +12,7 @@ int main() {
 		cin >> m[i];
 	}
 	int key;
-	cout << "Введите искомый элимент: ";
+	cout << "Введите искомый элемент: ";
 	cin >> key;
 	int left = 0;
 	int right = n - 1;
