@@ -61,6 +61,7 @@ int main() {
 	cin >> s;
 	cout << "Введите образ: ";
 	cin >> sub;
-	cout << KMP();
+	cout << BM();
+    //cout << KMP();
 	return 0;
 }
