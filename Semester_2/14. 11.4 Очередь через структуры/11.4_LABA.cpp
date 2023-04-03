@@ -165,31 +165,37 @@ int main()
 	Queue* queue = createQueue(size);
 	cout << "Вывод очереди" << endl;
 	printQueue(queue);
+
 	cout << "Введите элемент, который хотите добавить: ";
 	cin >> data;
 	push(queue, data);
 	cout << "Вывод очереди" << endl;
 	printQueue(queue);
+
 	pop(queue);
 	cout << "Вывод очереди" << endl;
 	printQueue(queue);
+
 	cout << "Введите элемент и позицию куда хотите добавить этот элемент: ";
 	cin >> data;
 	cin >> pos;
 	insert_element(queue, pos, data);
 	cout << "Вывод очереди" << endl;
 	printQueue(queue);
+
 	cout << "Введите количество элементов и позицию, куда хотите добавить: ";
 	cin >> k;
 	cin >> pos;
 	insert_elements(queue, pos, k);
 	cout << "Вывод очереди" << endl;
 	printQueue(queue);
+
 	cout << "Введите позицию откуда хотите удалить элемент: ";
 	cin >> pos;
 	delete_element(queue, pos);
 	cout << "Вывод очереди" << endl;
 	printQueue(queue);
+	
 	cout << "Введите количество элементов и позицию, откуда хотите удалить: ";
 	cin >> k;
 	cin >> pos;
