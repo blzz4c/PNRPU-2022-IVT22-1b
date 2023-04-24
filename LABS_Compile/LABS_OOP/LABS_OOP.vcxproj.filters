@@ -15,15 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Money.h">
+    <ClInclude Include="TRIAD.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="TIME.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Money.cpp">
+    <ClCompile Include="TRIAD.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Lab3_main.cpp">
+    <ClCompile Include="Lab4_main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TIME.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

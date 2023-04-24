@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Money.h" />
+    <ClInclude Include="TIME.h" />
+    <ClInclude Include="TRIAD.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Money.cpp" />
-    <ClCompile Include="Lab3_main.cpp" />
+    <ClCompile Include="TIME.cpp" />
+    <ClCompile Include="TRIAD.cpp" />
+    <ClCompile Include="Lab4_main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
