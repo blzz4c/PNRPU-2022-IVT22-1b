@@ -55,6 +55,6 @@ std::istream& operator>>(std::istream& in, TIME& tim) {
 }
 
 std::ostream& operator<<(std::ostream& out, const TIME& tim) {
-	std::cout << tim.hour << ":" << tim.min << ":" << tim.sec;
+	out << tim.hour << ":" << tim.min << ":" << tim.sec;
 	return out;
 }

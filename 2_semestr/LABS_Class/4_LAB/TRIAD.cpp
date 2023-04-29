@@ -51,8 +51,8 @@ std::istream& operator>>(std::istream&in, TRIAD&t) {
 }
 
 std::ostream& operator<<(std::ostream& out, const TRIAD& t) {
-	std::cout << "\nfirst: " << t.first;
-	std::cout << "\nsecond: " << t.second;
-	std::cout << "\nthird: " << t.third << "\n";
+	out << "\nfirst: " << t.first;
+	out << "\nsecond: " << t.second;
+	out << "\nthird: " << t.third << "\n";
 	return out;
 }
