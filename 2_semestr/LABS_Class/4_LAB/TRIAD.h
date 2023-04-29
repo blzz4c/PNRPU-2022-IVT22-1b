@@ -29,10 +29,10 @@ public:
 		return first != t.first && second != t.second && third != t.third;
 	};
 	bool operator>(TRIAD& t) {
-		return first > t.first && second > t.second && third > t.third;
+		return first + second + third > t.first + t.second + t.third;
 	};
 	bool operator<(TRIAD& t) {
-		return first < t.first && second < t.second && third < t.third;
+		return first + second + third < t.first + t.second + t.third;
 	};
 	
 	//глобальные функции ввода/вывода

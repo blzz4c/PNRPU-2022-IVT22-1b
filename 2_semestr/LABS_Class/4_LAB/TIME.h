@@ -20,10 +20,18 @@ public:
 		return hour != tim.hour && min != tim.min && sec != tim.sec;
 	};
 	bool operator>(TIME& tim) {
-		return hour > tim.hour && min > tim.min && sec > tim.sec;
+		bool h = hour > tim.hour;
+		bool m = hour == tim.hour && min > tim.min;
+		bool s = hour == tim.hour && min == tim.min && sec > tim.sec;
+		bool result = h + m + s;
+		return result;
 	};
 	bool operator<(TIME& tim) {
-		return hour < tim.hour && min < tim.min && sec < tim.sec;
+		bool h = hour < tim.hour;
+		bool m = hour == tim.hour && min < tim.min;
+		bool s = hour == tim.hour && min == tim.min && sec < tim.sec;
+		bool result = h + m + s;
+		return result;
 	};
 
 	friend std::istream& operator>>(std::istream& in, TIME& tim);
