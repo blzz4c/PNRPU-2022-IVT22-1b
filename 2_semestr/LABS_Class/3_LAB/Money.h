@@ -18,8 +18,6 @@ public:
 	//перегруженные операции
 	Money& operator=(const Money&);
 	Money operator-(const Money&);
-	Money operator==(const Money&);
-	Money operator!= (const Money&);
 	bool operator==(Money& m) { return rub == m.rub && cop == m.cop; };
 	bool operator!=(Money& m) { return rub != m.rub && cop != m.cop; };
 
