@@ -84,7 +84,6 @@ void List::Del(void)
 }
 void List::Find(int tmp)
 {
-	beg[tmp];
 	Object** p = beg;
 	for (int i = 0; i < cur; i++)
 	{
