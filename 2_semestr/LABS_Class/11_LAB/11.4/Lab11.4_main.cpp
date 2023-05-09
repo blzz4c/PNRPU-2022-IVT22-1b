@@ -72,7 +72,6 @@ void add_max(St& s, Money el) {
 
 int find_elem(St& s, Money key) {
 	Vec v = copy_stack_to_vector(s);
-	Money m;
 	int i = v.size();
 	while (!s.empty()) {
 		if (s.top() == key) {
