@@ -23,7 +23,6 @@ public:
 	bool operator>(const Money&);
 	bool operator<(const Money&);
 	bool operator==(const Money&);
-	bool operator==(const int&);
 
 	//глобальные функции ввода/вывода
 	friend std::istream& operator>>(std::istream& in, Money& m);

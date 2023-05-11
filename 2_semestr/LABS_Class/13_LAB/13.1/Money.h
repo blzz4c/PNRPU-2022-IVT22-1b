@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <string>
 
 class Money
 {
@@ -21,8 +20,9 @@ public:
 	Money operator/(const Money&);
 	Money operator/(const int&);
 	bool operator>(const Money&);
-	bool operator<(const Money&);
+	bool operator<(const Money&) const;
 	bool operator==(const Money&);
+	bool operator!=(const Money&);
 
 	//глобальные функции ввода/вывода
 	friend std::istream& operator>>(std::istream& in, Money& m);
