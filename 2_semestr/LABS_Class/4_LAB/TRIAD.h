@@ -12,7 +12,7 @@ public:
 	TRIAD(); //конструктор без параметров
 	TRIAD(int, int, int); //конструктор с параметрами
 	TRIAD(const TRIAD&);//конструктор копирования
-	virtual ~TRIAD(); //декструктор
+	~TRIAD(); //декструктор
 	int get_first() { return first; } //селектор
 	int get_second() { return second; } //селектор
 	int get_third() { return third; } // селектор
