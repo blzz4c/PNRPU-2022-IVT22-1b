@@ -1,69 +1,26 @@
 #include <iostream>
-#include <set>
+#include "Money.h"
+#include "Vector.h"
 using namespace std;
-typedef set<int, less<int>>TSet;
-typedef TSet::iterator it;
-
-TSet make_set(int n) {
-	TSet s;
-	int a;
-	for (int i = 0; i < n; i++) {
-		cout << "?";
-		cin >> a;
-		s.insert(a);
-	}
-	return s;
-}
-
-void print_set(TSet s) {
-	for (it i = s.begin(); i != s.end(); i++) {
-		cout << *i << " ";
-	}
-}
-
-int avg_value(TSet s)
-{
-	int sum = 0;
-	int n = s.size();
-	for (it i = s.begin(); i != s.end(); i++)
-	{
-		sum = sum + *i;
-	}
-	return sum / n;
-}
-
-TSet add_constant(TSet s, int constant)
-{
-	int iv = 0;
-	int* m = new int[s.size()];
-	for (it i = s.begin(); i != s.end(); i++)
-	{
-		m[iv] = *i + constant;
-		iv++;
-	}
-	TSet tmp(m, m + s.size());
-	return tmp;
-}
 
 void main() {
-	int n;
-	cout << "Enter number of element: ";
-	cin >> n;
-	TSet s = make_set(n);
-	print_set(s);
+	Vector<Money>vec(5);
+	vec.Print();
 
-	cout << "\nEx 1: ";
-	cout << "\nExercise impossible, because set store only unique values, and so max value is already in set";
+	cout << "Ex 3\n";
+	Money el = vec.max_elem();
+	vec.add_max(el);
+	vec.Print();
 
-	cout << "\nEx 2: ";
-	int key;
-	cout << "\nEnter key:";
-	cin >> key;
-	s.erase(key);
-	print_set(s);
+	cout << "Ex 4\n";
+	Money key;
+	cout << "Print the key: "; cin >> key;
+	int pos = vec.find_elem(key);
+	vec.del_elem(pos);
+	vec.Print();
 
-	cout << "\nEx 3: ";
-	int c = avg_value(s);
-	TSet s2 = add_constant(s, c);
-	print_set(s2);
+	cout << "Ex 5\n";
+	Money mid = vec.mid_value();
+	vec.add_value(mid);
+	vec.Print();
 }
