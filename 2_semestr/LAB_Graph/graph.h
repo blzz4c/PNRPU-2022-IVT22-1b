@@ -29,7 +29,6 @@
 #include <QApplication>
 #include <QGroupBox>
 #include <QToolButton>
-#include <QMenu>
 #include <QDir>
 #include <QSaveFile>
 #include <QFileDialog>
