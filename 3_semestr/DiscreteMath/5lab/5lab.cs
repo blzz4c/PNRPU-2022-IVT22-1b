@@ -11,118 +11,115 @@ namespace Lab5_DiscreteMath
     {
         static void Main(string[] args)
         {
-            int[,] matrix = new int[10, 10];
+            int[][] matrix = new int[10][];
             string rootProject = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-            string filePath;
             for (int i = 1; i <= 4; i++)
             {
                 if (i != 1)
                 {
                     Console.WriteLine('\n');
                 }
-                filePath = rootProject + $@"\Tests\g1{i}.txt";
+                string filePath = $@"{rootProject}\Tests\g1{i}.txt";
                 matrix = ReadMatrix(filePath);
                 WriteMatrix(matrix);
                 Console.WriteLine(" ");
-                int[,] RAMatrix = CreateReachAbilityMatrix(matrix);
+                int[][] RAMatrix = CreateReachAbilityMatrix(matrix);
                 WriteMatrix(RAMatrix);
                 WriteConnectivityComponents(RAMatrix);
             }
         }
-        static int[,] ReadMatrix(string filePath)
+        static int[][] ReadMatrix(string fileName)
         {
-            if (!File.Exists(filePath))
+            if (!File.Exists(fileName))
             {
                 throw new FileNotFoundException("Файл не найден!");
             }
-
-            string[] lines = File.ReadAllLines(filePath);//чтение строк
-            int M = lines.Length;
-            int[,] matrix = new int[M, M];//инициализация
-
-            for (int i = 0; i < M; i++)
-            {
-                string numbers = lines[i].Replace(" ", "");
-                for (int j = 0; j < M; j++)
-                {
-                    matrix[i, j] = int.Parse(numbers[j].ToString());
-                }
-            }
-            return matrix;
+            return File.ReadAllLines(fileName).Select(
+                t => t.Split().Select(x => int.Parse(x)).ToArray()).ToArray();
         }
-        static int[,] CreateReachAbilityMatrix(int[,] matrix)
+        static int[][] CreateReachAbilityMatrix(int[][] matrix)
         {
-            var resultMatrix = new int[matrix.GetLength(0), matrix.GetLength(1)];
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            var resultMatrix = new int[matrix.Length][];
+            for (int i = 0; i < matrix.Length; i++)
             {
-                resultMatrix[i, i] = 1;
+                resultMatrix[i] = new int[matrix.Length];
+                resultMatrix[i][i] = 1;
             } // создание единичной матрицы
-            var nextMatrix = (int[,])matrix.Clone();
+            var nextMatrix = matrix.Select(t => t.ToArray()).ToArray();
             resultMatrix = MatrixAddition(resultMatrix, nextMatrix);
-            for (int i = 0; i < matrix.GetLength(0) - 2; i++)
+            for (int i = 0; i < matrix.Length - 2; i++)
             {
                 nextMatrix = MatrixMultiply(nextMatrix, matrix);
                 resultMatrix = MatrixAddition(resultMatrix, nextMatrix);
             }
             return resultMatrix;
         }
-        static int[,] MatrixAddition(int[,] first, int[,] second)
+        static int[][] MatrixAddition(int[][] first, int[][] second)
         {
-            var resultMatrix = new int[first.GetLength(0), first.GetLength(1)];
-            for (int i = 0; i < first.GetLength(0); i++)
+            var resultMatrix = new int[first.Length][];
+            for (int i = 0; i < first.Length; i++)
             {
-                for (int j = 0; j < second.GetLength(0); j++)
+                resultMatrix[i] = new int[second.Length];
+                for (int j = 0; j < second.Length; j++)
                 {
-                    resultMatrix[i, j] = first[i,j] + second[i,j];
+                    resultMatrix[i][j] = Math.Max(first[i][j], second[i][j]);
                 }
             }
             return resultMatrix;
         }
-        static int[,] MatrixMultiply(int[,] first, int[,] second)
+        static int[][] MatrixMultiply(int[][] first, int[][] second)
         {
-            var resultMatrix = new int[first.GetLength(0), second.GetLength(1)];
-            for (int i = 0; i < first.GetLength(0); i++)
+            var resultMatrix = new int[first.Length][];
+            for (int i = 0; i < first.Length; i++)
             {
-                for (int j = 0; j < second.GetLength(0); j++)
+                resultMatrix[i] = new int[second.Length];
+                for (int j = 0; j < second.Length; j++)
                 {
-                    resultMatrix[i, j] = 0;
-                    for (int k = 0; k < second.GetLength(1); k++)
+                    resultMatrix[i][j] = 0;
+                    for (int k = 0; k < second.Length; k++)
                     {
-                        resultMatrix[i, j] += first[i, k] * second[k, j];
+                        resultMatrix[i][j] = Math.Max(resultMatrix[i][j], first[i][k] * second[k][j]);
                     }
                 }
             }
             return resultMatrix;
         }
-        static void WriteMatrix(int[,] matrix)
+        static void WriteMatrix(int[][] matrix)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int i = 0; i < matrix.Length; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrix[i].Length; j++)
                 {
                     if (j != 0)
                     {
                         Console.Write('\t');
                     }
-                    Console.Write(matrix[i, j]);
+                    Console.Write(matrix[i][j]);
                 }
 
                 Console.WriteLine();
             }
         }
-        static void WriteConnectivityComponents(int[,] matrix)
+        static void WriteConnectivityComponents(int[][] matrix)
         {
-            int j;
-            Console.Write("Компоненты связности: ");
-            for (int i = 0; i < matrix.GetLength(0);)
+            Dictionary<string, List<int>> dictionary = new Dictionary<string, List<int>>();
+            for (int i = 0; i < matrix.Length; i++) 
             {
-                Console.Write('{');
-                for (j = i; j != matrix.GetLength(0) && matrix[j,i] > 0; ++j)
+                string key = string.Join("", matrix[i]);
+                if (dictionary.ContainsKey(key))
                 {
-                    Console.Write((char)('A' + j));
+                    dictionary[key].Add(i);
                 }
-                Console.Write('}');
-                i = j;
+                else
+                {
+                    dictionary[key] = new List<int>() { i };
+                }
+            }
+            Console.WriteLine();
+            int count = 1;
+            foreach (var i in dictionary.Values) 
+            {
+                Console.WriteLine($"{count++} компонента связности: {string.Join(" ", i.Select(x => (char)(x + 'A')))}");
             }
         }
     }
