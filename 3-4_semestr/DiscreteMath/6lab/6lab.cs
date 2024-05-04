@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using System.Reflection.Emit;
+
 namespace DiscreteMathLab6
 {
     internal class Program
@@ -13,19 +16,27 @@ namespace DiscreteMathLab6
                 matrix = ReadMatrix(filePath);
                 WriteMatrix(matrix);
                 Console.WriteLine(" ");
+                var sw = new Stopwatch();
+                sw.Start();
                 WriteOstov(matrix);
+                sw.Stop();
+                Console.WriteLine($"{i} : {sw.Elapsed.Ticks}");
             }
         }
         static void WriteOstov(int[][] matrix)
         {
             bool[] isVisited = new bool[matrix[0].Length];
+            int sum = 0;
             isVisited[0] = true;
             for (int i = 0; i < matrix.Length - 1; i++)
             {
-                FindMin(matrix, ref isVisited);
+                var numbers = FindMin(matrix, ref isVisited);
+                sum += numbers.Item1;
+                Console.WriteLine($"{numbers.Item2}->{numbers.Item3}");
             }
+            Console.WriteLine($"Вес остова: {sum}");
         }
-        static void FindMin(int[][] matrix, ref bool[] isVisited)
+        static (int,int,int) FindMin(int[][] matrix, ref bool[] isVisited)
         {
             int minValue = int.MaxValue;
             int minRow = 0;
@@ -45,8 +56,9 @@ namespace DiscreteMathLab6
                     }
                 }
             }
-            Console.WriteLine($"{minRow}->{minCol}");
+            
             isVisited[minCol] = true;
+            return (minValue, minRow, minCol);
         }
         static int[][] ReadMatrix(string fileName)
         {
